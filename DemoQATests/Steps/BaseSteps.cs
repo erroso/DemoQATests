@@ -16,6 +16,7 @@ namespace DemoQATests.Steps
         private readonly IWebDriver _webDriver;
         private LoginPage _loginPage;
         private RegisterPage _registerPage;
+        private ProfilePage _profilePage;
 
         public BaseSteps(ScenarioContext scenarioContext)
         {
@@ -49,6 +50,15 @@ namespace DemoQATests.Steps
                 _registerPage = new RegisterPage(_webDriver);
             }
             return _registerPage;
+        }
+
+        public ProfilePage getProfilePage()
+        {
+            if (_profilePage == null)
+            {
+                _profilePage = new ProfilePage(_webDriver);
+            }
+            return _profilePage;
         }
 
     }

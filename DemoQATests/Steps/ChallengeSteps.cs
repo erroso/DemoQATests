@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using OpenQA.Selenium;
+using RestSharp;
 using TechTalk.SpecFlow;
 using DemoQATests.Helpers;
 using FluentAssertions;
+using DemoQATests.Hooks;
 
 namespace DemoQATests.Steps
 {
@@ -14,6 +15,7 @@ namespace DemoQATests.Steps
     {
         User _user;
         RegisterPage register;
+        
         public ChallengeSteps(ScenarioContext scenarioContext):
             base(scenarioContext)
         {
@@ -41,10 +43,39 @@ namespace DemoQATests.Steps
         [Then(@"the data was filled in correctly way")]
         public void ThenTheDataWasFilledInCorrectlyWay()
         {
-            getRegisterPage().isFirstName(_user.FirstName).Should().BeTrue();
-            getRegisterPage().isLastName(_user.LastName).Should().BeTrue();
-            getRegisterPage().isUserName(_user.UserName).Should().BeTrue();
-            getRegisterPage().isPassword(_user.Password).Should().BeTrue();
+            var registerPage = getRegisterPage();
+            registerPage.isFirstName(_user.FirstName).Should().BeTrue();
+            registerPage.isLastName(_user.LastName).Should().BeTrue();
+            registerPage.isUserName(_user.UserName).Should().BeTrue();
+            registerPage.isPassword(_user.Password).Should().BeTrue();
+        }
+
+        [Then(@"the user confirm the registration")]
+        public void ThenTheUserConfirmTheRegistration()
+        {
+            Login user = new Login()
+            {
+                userName = _user.UserName,
+                password = _user.Password
+            };
+            var answer = AccountAPI.registerUser(user);
+            answer.StatusCode.ToString().Should().Be("Created");
+        }
+
+        [Then(@"the user logs in, confirming that the registration was successfully")]
+        public void ThenTheUserLogsInConfirmingThatTheRegistrationWasSuccessfully()
+        {
+            var loginPage = getLoginPage();
+            loginPage.goToPage();
+            loginPage.login(_user.UserName, _user.Password);
+            var profilePage = getProfilePage();
+            if(profilePage.isUserNameOnPage())
+            {
+                profilePage.Screenshot(getScenario().ScenarioInfo.Title);
+            }
+            
+            
+
         }
 
 

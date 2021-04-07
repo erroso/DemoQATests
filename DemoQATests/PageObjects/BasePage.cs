@@ -12,6 +12,7 @@ namespace DemoQATests.PageObjects
         private DefaultWait<IWebDriver> fluentWait;
         private int timeOut = 5; //seconds
         private int pollingInterval = 250; //miliseconds
+        const string _SCREENSHOT_FOLDER = "C:\\temp\\";
 
         public BasePage(IWebDriver driver)
         {
@@ -47,7 +48,7 @@ namespace DemoQATests.PageObjects
             return fluentWait;
         }
 
-        bool isElementOnPage(IWebElement element)
+        public bool isElementOnPage(IWebElement element)
         {
             changeImplicitWait(1);
             bool isElementOnPage = true;
@@ -66,5 +67,13 @@ namespace DemoQATests.PageObjects
             }
             return isElementOnPage;
         }
+
+        public void Screenshot(string scenario)
+        {
+            ITakesScreenshot camera = getDriver() as ITakesScreenshot;
+            Screenshot foto = camera.GetScreenshot();
+            foto.SaveAsFile(_SCREENSHOT_FOLDER + $"{scenario}_{DateTime.Now:yyyyMMddHHmmss}.Png", ScreenshotImageFormat.Png);
+        }
+
     }
 }

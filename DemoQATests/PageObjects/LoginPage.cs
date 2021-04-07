@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using DemoQATests.Hooks;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumExtras.PageObjects;
 using System;
@@ -9,9 +10,7 @@ namespace DemoQATests.PageObjects
     {
         
         string _url = "https://demoqa.com/login";
-       
-     
-
+        
         public LoginPage(IWebDriver driver)
             : base(driver)
         {
@@ -42,15 +41,13 @@ namespace DemoQATests.PageObjects
         {
             newUser_button.Click();
         }
-  
-        public void GerarScreenshot(string scenario)
+
+        public void login(string str1, string str2)
         {
-            ChromeDriver x = (ChromeDriver) getDriver();
-            x.GetScreenshot().SaveAsFile("C:\\temp\\" + $"{scenario}_{DateTime.Now:yyyyMMddHHmmss}.Png",
-                ScreenshotImageFormat.Png);
+            userName_textbox.SendKeys(str1);
+            password_textbox.SendKeys(str2);
+            login_button.Click();
         }
-
-
-
+  
     }
 }

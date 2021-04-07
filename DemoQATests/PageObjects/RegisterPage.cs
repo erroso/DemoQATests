@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
+
 namespace DemoQATests.PageObjects
 {
     public class RegisterPage : BasePage
@@ -30,6 +31,9 @@ namespace DemoQATests.PageObjects
         [FindsBy(How = How.Id, Using = "register")]
         private IWebElement register_button;
 
+        [FindsBy(How = How.Id, Using = "gotologin")]
+        private IWebElement gotologin_button;
+        
 
         public void fillFirstName(string str)
         {
@@ -114,6 +118,5 @@ namespace DemoQATests.PageObjects
             return answer;
         }
 
-       
     }
 }

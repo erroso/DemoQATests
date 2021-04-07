@@ -49,7 +49,7 @@ namespace DemoQATests.Helpers
             const string LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
             const string UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const string NUMBERS = "0123456789";
-            const string SPECIAL = @"~!@#$%^&*():;[]{}<>,.?/\|";
+            const string SPECIAL = @"!@#$%&";
 
             // Make a list of allowed characters
             string allowed = LOWERCASE + UPPERCASE;
