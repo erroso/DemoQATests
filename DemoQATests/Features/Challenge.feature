@@ -15,4 +15,4 @@ Scenario: Search a book and add it to the book collection
 	Given the authenticated user navigates to profile page
 	When the user searches a specific book using the tag "JavaScript"
 	Then a list of all books with this tag appears
-	Then the user add the book number "x" of the list to his book collection
+	Then the user add the book number '2' of the list to his book collection

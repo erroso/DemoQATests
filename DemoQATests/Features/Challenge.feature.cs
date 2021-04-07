@@ -168,7 +168,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then("a list of all books with this tag appears", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 18
- testRunner.Then("the user add the book number \"x\" of the list to his book collection", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user add the book number \'2\' of the list to his book collection", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

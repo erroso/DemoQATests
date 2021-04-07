@@ -17,6 +17,7 @@ namespace DemoQATests.Steps
         private LoginPage _loginPage;
         private RegisterPage _registerPage;
         private ProfilePage _profilePage;
+        private BooksPage _booksPage;
 
         public BaseSteps(ScenarioContext scenarioContext)
         {
@@ -59,6 +60,15 @@ namespace DemoQATests.Steps
                 _profilePage = new ProfilePage(_webDriver);
             }
             return _profilePage;
+        }
+
+        public BooksPage getBooksPage()
+        {
+            if (_booksPage == null)
+            {
+                _booksPage = new BooksPage(_webDriver);
+            }
+            return _booksPage;
         }
 
     }
