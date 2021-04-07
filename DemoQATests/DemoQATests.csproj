@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetSeleniumExtras.PageObjects" Version="3.11.0" />
+    <PackageReference Include="DotNetSeleniumExtras.PageObjects.Core" Version="3.12.0" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
@@ -31,9 +33,6 @@
 
   <ItemGroup>
     <Folder Include="Drivers\" />
-    <Folder Include="Hooks\" />
-    <Folder Include="PageObjects\" />
-    <Folder Include="Steps\" />
   </ItemGroup>
 
 </Project>
